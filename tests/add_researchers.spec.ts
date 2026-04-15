@@ -25,8 +25,8 @@ test.beforeEach(async ({ page }) => {
 
 	await expect(page).toHaveURL(/home/)
 
-	expect(page.locator("#logout-section")).toBeVisible()
-	expect(page.locator("#logout-section")).toContainText(process.env.USER_NAME)
+	await expect(page.locator("#logout-section")).toBeVisible()
+	await expect(page.locator("#logout-section")).toContainText(process.env.USER_NAME)
 })
 
 test.describe("adding researchers", () => {
@@ -56,7 +56,7 @@ test.describe("adding researchers", () => {
 			await researcherTablePage.addResearcher()
 
 			const newResearcherPage = new NewResearcherPage(page)
-			newResearcherPage.visit()
+			await newResearcherPage.visit()
 			const form = newResearcherPage.getForm()
 			await form.fillEmail(email)
 			await form.submit()
