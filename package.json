@@ -3,16 +3,32 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "prepare": "husky"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.23.0",
   "devDependencies": {
     "@playwright/test": "^1.58.2",
-    "@types/node": "^25.5.0"
+    "@types/node": "^25.5.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0"
   },
   "dependencies": {
+    "biome": "^0.3.3",
     "dotenv": "^17.3.1"
-  }
+  },
+  
+  "lint-staged": {
+		"*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
+			"biome check --files-ignore-unknown=true --colors=force --reporter=summary",
+			"biome check --write --no-errors-on-unmatched",
+			"biome check --write --organize-imports-enabled=false --no-errors-on-unmatched",
+			"biome check --write --unsafe --no-errors-on-unmatched",
+			"biome format --write --no-errors-on-unmatched",
+			"biome lint --write --no-errors-on-unmatched"
+		]
+	}
 }

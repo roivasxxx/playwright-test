@@ -24,6 +24,8 @@ test.beforeEach(async ({ page }) => {
   await page.locator('[name="j_id_8:password"]').fill(process.env.PASSWORD);
   await page.locator('[name="j_id_8:login"]').click();
 
+  console.log("change")
+
   await expect(page).toHaveURL(/home/);
 
   await expect(page.locator("#logout-section")).toBeVisible();
