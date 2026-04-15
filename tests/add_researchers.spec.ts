@@ -25,7 +25,7 @@ test.beforeEach(async ({ page }) => {
 
 	await expect(page).toHaveURL(/home/)
 
-	expect(page.locator("#logout-section")).toBeVisible()
+	await expect(page.locator("#logout-section")).toBeVisible()
 	expect(page.locator("#logout-section")).toContainText(process.env.USER_NAME)
 })
 
