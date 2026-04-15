@@ -29,7 +29,8 @@
         "noEmptyPattern": "off"
       },
       "nursery": {
-        "noFloatingPromises": "error"
+        "noFloatingPromises": "error",
+        "noPlaywrightMissingAwait": "error"
       }
     }
   },
